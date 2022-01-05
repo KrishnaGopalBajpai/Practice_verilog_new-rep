@@ -1,4 +1,4 @@
-// moore modle using ol case for seq_1001.
+// moore modle using ol/nol case for seq_1001.
 module seq_mor_1001 (input i, clk, rst, output reg q);
     // state decleare
     localparam idle  = 3'b000;
