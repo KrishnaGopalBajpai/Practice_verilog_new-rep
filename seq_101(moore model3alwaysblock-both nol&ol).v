@@ -1,4 +1,4 @@
-// moore modle of sequence dector 101 using 3 always block and overlapping case.
+// moore modle of sequence dector 101 using 3 always block and non overlapping case.
 module seq_mor_101(input i, clk, rst, output reg q);
   // state decleration.
   localparam idle = 2'b00;
@@ -16,7 +16,7 @@ module seq_mor_101(input i, clk, rst, output reg q);
     ps=ns;
     
     // overlapping case of state machine.
-    always@(ps) begin
+    always @(ps) begin
     case(ps)
       idle:if(i==1) ns=s1;
             else ns=idle;
@@ -25,8 +25,9 @@ module seq_mor_101(input i, clk, rst, output reg q);
       s10: if(i==1) ns=s101;
             else ns=idle;
       s101:if(i==1) ns= s1;
-            else ns= s10;
-    endcase 
+            else ns= s10; 
+    endcase
+   end
     
     // non-overlapping case.
 /*    always@(posedge clk)
@@ -37,7 +38,7 @@ module seq_mor_101(input i, clk, rst, output reg q);
             else ns=s10; 
       s10: if(i==1) ns=s101;
             else ns=idle;
-      s101:if(i==1) ns= idle;
+      s101:if(i==1) ns= s1;
             else ns= idle;
     endcase
     */
@@ -45,7 +46,7 @@ module seq_mor_101(input i, clk, rst, output reg q);
     always @(posedge clk)
     if(rst)
     q=0;
-    else if(st==101)
+    else if(ps==s101)
     q=1;
     else
     q=0; 
