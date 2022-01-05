@@ -1,4 +1,4 @@
-// module sequence dectoter with single always block and nol.
+// module sequence dectoter 1011 with single always block and nol and ol .
 module seq_1011(input i, clk, rst, output reg q);
  // state decleration.
  localparam idle=2'b00;
@@ -12,14 +12,27 @@ module seq_1011(input i, clk, rst, output reg q);
   st=idle;
   q=0; end
   else
-    case(st)
+    // case block for overlapping 1 bit.
+    /*case(st)  
     idle: if(i==1)begin st=s1; q=0; end
           else begin st=idle; q=0; end
     s1  : if(i==1) begin st=s1; q=0; end
           else begin st=s10; q=0; end
     s10 : if(i==1)begin st=s101; q=0; end
           else begin st=idle; q=0; end
-    s101: if(i==1)begin st=s1; q=1 end
+    s101: if(i==1)begin st=s1; q=1; end
           else begin st=idle; q=0; end
-    endcase                
+    endcase */ 
+    
+    // case block for non-overlapping
+    case(st) 
+    idle: if(i==1)begin st=s1; q=0; end
+          else begin st=idle; q=0; end
+    s1  : if(i==1) begin st=s1; q=0; end
+          else begin st=s10; q=0; end
+    s10 : if(i==1)begin st=s101; q=0; end
+          else begin st=idle; q=0; end
+    s101: if(i==1)begin st=idle; q=1; end
+          else begin st=idle; q=0; end
+    endcase               
 endmodule
