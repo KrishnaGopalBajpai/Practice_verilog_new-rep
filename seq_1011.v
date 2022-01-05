@@ -1,4 +1,4 @@
-// module sequence dectoter 1011 with single always block and nol and ol .
+// module sequence dectoter 1011(mealy model) with single always block and nol and ol .
 module seq_1011(input i, clk, rst, output reg q);
  // state decleration.
  localparam idle=2'b00;
