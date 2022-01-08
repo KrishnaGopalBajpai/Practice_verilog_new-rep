@@ -1,3 +1,5 @@
+//Notes: contains alphabets (a-z, A-Z), digits (0-9) and special characters( _, $). Case sensitive.
+
 // module decleration.
 module fun(input a,b,output y);
  //(Identifiers in this module are
