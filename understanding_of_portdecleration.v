@@ -16,7 +16,7 @@ endmodule
 
 // mod-4 counter.
 
-//bed practice of port decleration. understanding_of_basic_primitiv.v
+//bed practice of port decleration. 
 module mod_counter(input clk,rst,output reg[1:0]q);
    // want to implement q vaule at every pulse.
    reg[1:0] temp;
